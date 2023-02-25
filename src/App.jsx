@@ -1,9 +1,14 @@
+import { Container } from './components/Container/Container';
+import { Header } from './components/Header/Header';
+
 export const App = () => {
   return (
     <>
-    <header></header>
+    <Header />
     <main>
-      <nav></nav>
+      <nav>
+        <Container className="navigation__container"/>
+      </nav>
       <section></section>
     </main>
     <footer></footer>
