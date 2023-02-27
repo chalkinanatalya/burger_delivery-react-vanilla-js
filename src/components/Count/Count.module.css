@@ -15,6 +15,10 @@
   .minus {
     width: 8px;
   }
+
+  .minus:disabled {
+    cursor: default;
+  }
   
   .plus {
     width: 8px;
