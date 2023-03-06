@@ -10,6 +10,7 @@ export const Navigation = () => {
   const { category, activeCategory } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
+  //request
   useEffect(() => {
     dispatch(categoryRequestAsync());
   }, []);
