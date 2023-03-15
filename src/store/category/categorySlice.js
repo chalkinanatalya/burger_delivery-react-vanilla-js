@@ -26,18 +26,19 @@ const categorySlice = createSlice({
       }
     },
     //authomatic actions
-    extraReducers: {
-      [categoryRequestAsync.pending.type]: (state) => {
-        state.error = '';
-      },
-      [categoryRequestAsync.fulfilled.type]: (state, action) => {
-        state.error = '';
-        state.category = action.payload;
-      },
-      [categoryRequestAsync.rejected.type]: (state, action) => {
-        state.error = action.payload.error;
-      }
-    }
+    extraReducers: (builder) => {
+      builder
+        .addCase(categoryRequestAsync.pending, (state) => {
+          state.error = '';
+        })
+        .addCase(categoryRequestAsync.fulfilled, (state, action) => {
+          state.error = '';
+          state.category = action.payload;
+        })
+        .addCase(categoryRequestAsync.rejected, (state, action) => {
+          state.error = action.payload.error;
+        });
+    },
 });
 
 export const { changeCategory } = categorySlice.actions
