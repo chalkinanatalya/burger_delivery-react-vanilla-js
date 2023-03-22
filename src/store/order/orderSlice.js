@@ -14,7 +14,6 @@ export const localStorageMiddleware = store => next => action=> {
     const nextAction = next(action);
     if(nextAction.type.startsWith('order/')) {
         const orderList = store.getState().order.orderList;
-        console.log('orderList: ', orderList);
         localStorage.setItem('order', JSON.stringify(orderList));
     }
 
@@ -69,7 +68,11 @@ const orderSlice = createSlice({
             } else {
                 state.orderList = state.orderList.filter(item => item.id !== action.payload.id,)
             }
-        }
+        },
+        clearOrder: (state) => {
+            state.orderList = [];
+            state.orderGoods = [];
+        },
     },
     extraReducers: builder => {
         builder
@@ -104,5 +107,5 @@ const orderSlice = createSlice({
     }
 });
 
-export const { addProduct, removeProduct } = orderSlice.actions;
+export const { addProduct, removeProduct, clearOrder } = orderSlice.actions;
 export default orderSlice.reducer;
