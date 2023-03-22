@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import style from './Count.module.css';
 import { useDispatch } from 'react-redux';
 import { addProduct, removeProduct } from '../../store/order/orderSlice';
